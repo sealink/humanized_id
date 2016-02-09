@@ -1,8 +1,8 @@
 module HumanizedId
   class Humanizer
-    def initialize(id:, total_length: nil, prefix: '', source_charset:, target_charset:)
+    def initialize(id:, generated_length: nil, prefix: '', source_charset:, target_charset:)
       @id               = id
-      @total_length     = total_length || id.to_s.length
+      @generated_length = generated_length || id.to_s.length
       @prefix           = prefix
       @source_charset   = source_charset
       @target_charset   = target_charset
@@ -12,7 +12,7 @@ module HumanizedId
     def generate_humanized_id
       new_id = id_in_target_charset(id: id_in_target_base(id: @id))
       new_id = add_padding(id: new_id)
-      "#{prefix}#{new_id}"
+      "#{@prefix}#{new_id}"
     end
 
     private
@@ -38,9 +38,9 @@ module HumanizedId
       id.tr(source_charset_subset, target_charset)
     end
 
-    def add_padding(id: @id, total_length: @total_length)
-      if total_length > id.length
-        padding = target_charset[0] * (total_length - id.length)
+    def add_padding(id: @id, generated_length: @generated_length, target_charset: @target_charset)
+      if generated_length > id.length
+        padding = target_charset[0] * (generated_length - id.length)
         id = "#{padding}#{id}"
       end
       id
