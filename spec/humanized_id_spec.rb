@@ -15,7 +15,7 @@ describe HumanizedId do
       let(:params) {
         {
           id: 102_421_311_311,
-          generated_length: 20,
+          length: 20,
           prefix: 'test',
           source_charset: '1234567890abcdefgh',
           target_charset: '1234567890abcdefgh'
@@ -39,7 +39,15 @@ describe HumanizedId do
     end
 
     context 'with all values passed in' do
-      let(:params) { { prefix: 'test', length: 3, real_rand: true } }
+      let(:params) {
+        {
+          prefix: 'test',
+          length: 3,
+          real_rand: true,
+          source_charset: '1234567890abcdefgh',
+          target_charset: '1234567890abcdefgh'
+        }
+      }
       it 'should produce random id with requested length and prefix' do
         expect(random_id.length).to eq(params[:prefix].length + params[:length])
         expect(random_id[0..(params[:prefix].length - 1)]).to eq params[:prefix]

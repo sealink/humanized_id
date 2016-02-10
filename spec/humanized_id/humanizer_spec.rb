@@ -39,15 +39,15 @@ describe HumanizedId::Humanizer do
       end
     end
 
-    context 'with generated_length added' do
-      context 'with greater generated_length' do
-        let(:params) { super().merge(generated_length: 15) }
-        it 'should add additional padding to meet required generated_length' do
+    context 'with length added' do
+      context 'with greater length' do
+        let(:params) { super().merge(length: 15) }
+        it 'should add additional padding to meet required length' do
           expect(generated_id).to eq(('1' * 3) + converted_id_with_default_padding)
         end
       end
-      context 'with smaller generated_length' do
-        let(:params) { super().merge(generated_length: 2) }
+      context 'with smaller length' do
+        let(:params) { super().merge(length: 2) }
         it 'should trim the id to required length' do
           expect(generated_id).to eq converted_id_without_padding[0..1]
         end
@@ -56,7 +56,7 @@ describe HumanizedId::Humanizer do
 
     context 'with prefix added' do
       let(:params) { super().merge(prefix: 'abc') }
-      it 'should generate id with padding for default generated_length and then prefix added' do
+      it 'should generate id with padding for default length and then prefix added' do
         expect(generated_id).to eq(params[:prefix] + converted_id_with_default_padding)
       end
     end

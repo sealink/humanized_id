@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
                        'generate a new human friendly id based on a given charset'
   spec.description   = 'HumanizedId can be used to generate (or convert to) a ' \
                        'human friendly id based on a default (or passed in) charset'
-  spec.homepage      = '' # TODO: Spec homepage
+  spec.homepage      = 'https://github.com/sealink/humanized_id'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`
@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.0'
 
   spec.add_dependency 'realrand', '~> 2.0'
+  spec.add_dependency 'facets'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'

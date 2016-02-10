@@ -1,31 +1,25 @@
-# frozen_string_literal: true
 module HumanizedId
   class << self
-    DEFAULT_CHARACTERSET = '234679CDFGHJKMNPQRTVWXYZ'.freeze
-    RUBY_DIGITMAP = '0123456789abcdefghijklmnopqrstuvwxyz'.freeze
     DEFAULT_GENERATION_LENGTH = 24
 
-    def humanize(
-      id:,
-      generated_length: nil,
-      prefix: '',
-      source_charset: RUBY_DIGITMAP,
-      target_charset: DEFAULT_CHARACTERSET
-    )
+    def humanize(id:, length: nil, prefix: '', source_charset: nil, target_charset: nil)
       HumanizedId::Humanizer.new(
         id: id,
-        generated_length: generated_length,
+        length: length,
         prefix: prefix,
         source_charset: source_charset,
         target_charset: target_charset
       ).generate_humanized_id
     end
 
-    def generate_random(prefix: '', length: DEFAULT_GENERATION_LENGTH, real_rand: false)
+    def generate_random(prefix: '', length: default_random_length, real_rand: false,
+                        source_charset: nil, target_charset: nil)
       HumanizedId::RandGenerator.new(
         prefix: prefix,
         length: length,
-        real_rand: real_rand
+        real_rand: real_rand,
+        source_charset: source_charset,
+        target_charset: target_charset
       ).generate_random_humanized_id
     end
 

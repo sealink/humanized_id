@@ -1,11 +1,19 @@
+# frozen_string_literal: true
+require 'facets'
+
 module HumanizedId
   class Humanizer
-    def initialize(id:, generated_length: nil, prefix: '', source_charset:, target_charset:)
+    DEFAULT_CHARACTERSET = '234679CDFGHJKMNPQRTVWXYZ'.freeze
+    RUBY_DIGITMAP = '0123456789abcdefghijklmnopqrstuvwxyz'.freeze
+
+    def initialize(id:, length: nil, prefix: '',
+                   source_charset: RUBY_DIGITMAP,
+                   target_charset: DEFAULT_CHARACTERSET)
       @id               = id
-      @generated_length = generated_length || id.to_s.length
+      @length           = length || id.to_s.length
       @prefix           = prefix
-      @source_charset   = source_charset
-      @target_charset   = target_charset
+      @source_charset   = source_charset.blank? ? RUBY_DIGITMAP : source_charset
+      @target_charset   = target_charset.blank? ? DEFAULT_CHARACTERSET : target_charset
       validate_charset
     end
 
@@ -38,11 +46,11 @@ module HumanizedId
       id.tr(source_charset_subset, target_charset)
     end
 
-    def resize(id: @id, required_length: @generated_length, padding_value: @target_charset[0])
+    def resize(id: @id, required_length: @length, padding_value: @target_charset[0])
       if required_length > id.length
         id = "#{padding_value * (required_length - id.length)}#{id}"
       elsif required_length < id.length
-        id = id[0..(required_length - 1)]
+        id = id.slice(0..(required_length - 1))
       end
       id
     end
