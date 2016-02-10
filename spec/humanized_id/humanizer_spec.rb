@@ -48,8 +48,8 @@ describe HumanizedId::Humanizer do
       end
       context 'with smaller generated_length' do
         let(:params) { super().merge(generated_length: 2) }
-        it 'should not pad the converted id at all' do
-          expect(generated_id).to eq converted_id_without_padding
+        it 'should trim the id to required length' do
+          expect(generated_id).to eq converted_id_without_padding[0..1]
         end
       end
     end
