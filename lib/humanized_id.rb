@@ -21,10 +21,17 @@ module HumanizedId
       ).generate_humanized_id
     end
 
-    def generate_random(prefix: '', length: DEFAULT_GENERATION_LENGTH)
-      HumanizedId::RandGenerator.new.generate_random_humanized_id
+    def generate_random(prefix: '', length: DEFAULT_GENERATION_LENGTH, real_rand: false)
+      HumanizedId::RandGenerator.new(
+        prefix: prefix,
+        length: length,
+        real_rand: real_rand
+      ).generate_random_humanized_id
     end
 
+    def default_random_length
+      DEFAULT_GENERATION_LENGTH
+    end
   end
   Error = Class.new(StandardError)
 end
