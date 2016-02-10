@@ -1,6 +1,5 @@
 # coding: utf-8
 
-# TODO: FIX THIS FILE UP
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'humanized_id/version'
@@ -13,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Gem to convert an existing id to a human friendly id or ' \
                        'generate a new human friendly id based on a given charset'
-  spec.description   = 'HumanizedId can be used to generate (or convert to) a ' \
+  spec.description   = 'HumanizedId can be used to generate (or convert an existing id to) a ' \
                        'human friendly id based on a default (or passed in) charset'
   spec.homepage      = 'https://github.com/sealink/humanized_id'
   spec.license       = 'MIT'

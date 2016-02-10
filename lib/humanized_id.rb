@@ -1,31 +1,21 @@
 module HumanizedId
-  class << self
-    DEFAULT_GENERATION_LENGTH = 24
 
-    def humanize(id:, length: nil, prefix: '', source_charset: nil, target_charset: nil)
-      HumanizedId::Humanizer.new(
-        id: id,
-        length: length,
-        prefix: prefix,
-        source_charset: source_charset,
-        target_charset: target_charset
-      ).generate_humanized_id
+  DEFAULT_GENERATION_LENGTH = 24
+  CHARACTERSET =
+    (('0'..'9').to_a + ('A'..'Z').to_a - %w(0 1 5 8 A B E I L O S U)).join('').freeze
+
+  class << self
+
+    def humanize(id:, length: nil, prefix: '')
+      HumanizedId::Humanizer.new(id: id, length: length, prefix: prefix).generate_humanized_id
     end
 
-    def generate_random(prefix: '', length: default_random_length, real_rand: false,
-                        source_charset: nil, target_charset: nil)
+    def generate_random(prefix: '', length: DEFAULT_GENERATION_LENGTH, real_rand: false)
       HumanizedId::RandGenerator.new(
-        prefix: prefix,
-        length: length,
-        real_rand: real_rand,
-        source_charset: source_charset,
-        target_charset: target_charset
+        prefix: prefix, length: length, real_rand: real_rand
       ).generate_random_humanized_id
     end
 
-    def default_random_length
-      DEFAULT_GENERATION_LENGTH
-    end
   end
   Error = Class.new(StandardError)
 end

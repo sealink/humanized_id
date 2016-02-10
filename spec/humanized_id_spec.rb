@@ -16,14 +16,12 @@ describe HumanizedId do
         {
           id: 102_421_311_311,
           length: 20,
-          prefix: 'test',
-          source_charset: '1234567890abcdefgh',
-          target_charset: '1234567890abcdefgh'
+          prefix: 'test'
         }
       }
-      let(:converted_id_without_padding) { '9555a146b' }
+      let(:converted_id_without_padding) { 'YDYT92MZ' }
       it 'should humanize id appropriately' do
-        expect(humanized_id).to eq(params[:prefix] + ('1' * 11) + converted_id_without_padding)
+        expect(humanized_id).to eq(params[:prefix] + ('2' * 12) + converted_id_without_padding)
       end
     end
   end
@@ -43,9 +41,7 @@ describe HumanizedId do
         {
           prefix: 'test',
           length: 3,
-          real_rand: true,
-          source_charset: '1234567890abcdefgh',
-          target_charset: '1234567890abcdefgh'
+          real_rand: true
         }
       }
       it 'should produce random id with requested length and prefix' do

@@ -2,12 +2,10 @@ require 'random/online'
 
 module HumanizedId
   class RandGenerator
-    def initialize(prefix: '', length:, real_rand: false, source_charset: nil, target_charset: nil)
+    def initialize(prefix: '', length:, real_rand: false)
       @prefix = prefix
       @length = length
       @real_rand = real_rand
-      @source_charset = source_charset
-      @target_charset = target_charset
     end
 
     def generate_random_humanized_id
@@ -16,9 +14,7 @@ module HumanizedId
       HumanizedId.humanize(
         id: generate_random_numerical_id(length: @length * 2),
         length: @length,
-        prefix: @prefix,
-        source_charset: @source_charset,
-        target_charset: @target_charset
+        prefix: @prefix
       )
     end
 
