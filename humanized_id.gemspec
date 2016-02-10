@@ -11,9 +11,9 @@ Gem::Specification.new do |spec|
   spec.email         = ['support@travellink.com.au']
 
   spec.summary       = 'Gem to convert an existing id to a human friendly id or ' \
-                       'generate a new human friendly id based on a given charset'
+                       'generate a new human friendly random id'
   spec.description   = 'HumanizedId can be used to generate (or convert an existing id to) a ' \
-                       'human friendly id based on a default (or passed in) charset'
+                       'human friendly id'
   spec.homepage      = 'https://github.com/sealink/humanized_id'
   spec.license       = 'MIT'
 
