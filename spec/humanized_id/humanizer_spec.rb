@@ -36,13 +36,15 @@ describe HumanizedId::Humanizer do
       context 'with greater length' do
         let(:params) { super().merge(length: 15) }
         it 'should add additional padding to meet required length' do
-          expect(generated_id).to eq(('2' * 7) + params[:id])
+          expect(generated_id.length).to eq(params[:length])
+          expect(generated_id.slice((params[:length] - params[:id].length)..(params[:length] - 1)))
+            .to eq params[:id]
         end
       end
       context 'with smaller length' do
         let(:params) { super().merge(length: 2) }
         it 'should trim the id to required length' do
-          expect(generated_id).to eq 'MN'
+          expect(generated_id).to eq(params[:id].slice(0..(params[:length] - 1)))
         end
       end
     end

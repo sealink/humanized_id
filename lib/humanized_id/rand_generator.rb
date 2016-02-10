@@ -1,32 +1,24 @@
-require 'random/online'
-
 module HumanizedId
   class RandGenerator
-    def initialize(prefix: '', length:, real_rand: false)
+    def initialize(prefix: '', length:)
       @prefix = prefix
       @length = length
-      @real_rand = real_rand
+      @target_charset = HumanizedId::CHARACTERSET
     end
 
     def generate_random_humanized_id
-      # Generate a random number bigger than we need (to avoid precision loss during humanization).
-      # Then request humanization with the original requested length and any prefix
-      HumanizedId.humanize(
-        id: generate_random_numerical_id(length: @length * 2),
-        length: @length,
-        prefix: @prefix
-      )
+      "#{@prefix}#{generate_random}"
     end
 
     private
 
-    def generate_random_numerical_id(length: @length, real_rand: @real_rand)
-      # Note that using real_rand has a big performance impact
-      if real_rand
-        real_rand_generator = RealRand::RandomOrg.new
-        return real_rand_generator.randnum(length, 0, 9).join('').to_i
-      end
-      (Array.new(length) { rand(10) }).join('').to_i
+    def generate_random(length: @length, target_charset: @target_charset)
+      SecureRandom.random_bytes(length).unpack('C*').map{ |byte|
+        idx = byte % 64
+        idx = SecureRandom.random_number(target_charset.size) if
+          idx >= target_charset.size
+        target_charset[idx]
+      }.join
     end
   end
 end

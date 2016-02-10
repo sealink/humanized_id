@@ -18,12 +18,5 @@ describe HumanizedId::RandGenerator do
         expect(rand_humanized_id[0..(params[:prefix].length - 1)]).to eq params[:prefix]
       end
     end
-
-    context 'with real_rand enabled' do
-      let(:params) { super().merge(real_rand: true) }
-      it 'should generate random humanized id at required length' do
-        expect(rand_humanized_id.length).to eq params[:length]
-      end
-    end
   end
 end

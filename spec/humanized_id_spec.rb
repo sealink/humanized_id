@@ -2,26 +2,27 @@ require 'spec_helper'
 
 describe HumanizedId do
   context 'when calling humanize' do
-    let(:params) { { id: 102_421_311_311 } }
-    let(:converted_id_without_padding) { 'YDYT92MZ' }
+    let(:params) { { id: '22FARTYFART' } }
     let(:humanized_id) { HumanizedId.humanize params }
 
     context 'with minimum required values' do
-      it 'should humanize the id padded to original length' do
-        expect(humanized_id).to eq(('2' * 4) + converted_id_without_padding)
+      it 'should return a different humanized id of same size' do
+        expect(humanized_id).not_to eq params[:id]
+        expect(humanized_id.length).to eq params[:id].length
       end
     end
     context 'with all params passed in' do
       let(:params) {
         {
-          id: 102_421_311_311,
+          id: '22FARTYFART',
           length: 20,
           prefix: 'test'
         }
       }
-      let(:converted_id_without_padding) { 'YDYT92MZ' }
-      it 'should humanize id appropriately' do
-        expect(humanized_id).to eq(params[:prefix] + ('2' * 12) + converted_id_without_padding)
+      it 'should humanize id with appropriate length and prefix' do
+        expect(humanized_id).not_to eq(params[:prefix] + params[:id])
+        expect(humanized_id.size).to eq(params[:prefix].length + params[:length])
+        expect(humanized_id.slice(0..(params[:prefix].length - 1))).to eq params[:prefix]
       end
     end
   end
@@ -32,7 +33,7 @@ describe HumanizedId do
 
     context 'with minimum required values' do
       it 'should produce random id of default length' do
-        expect(random_id.length).to eq HumanizedId.default_random_length
+        expect(random_id.length).to eq HumanizedId::DEFAULT_GENERATION_LENGTH
       end
     end
 
@@ -40,8 +41,7 @@ describe HumanizedId do
       let(:params) {
         {
           prefix: 'test',
-          length: 3,
-          real_rand: true
+          length: 3
         }
       }
       it 'should produce random id with requested length and prefix' do
