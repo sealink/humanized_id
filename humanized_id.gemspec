@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'humanized_id/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'humaized_id'
+  spec.name          = 'humanized_id'
   spec.version       = HumanizedId::VERSION
   spec.authors       = ['Akil Madan']
   spec.email         = ['support@travellink.com.au']
