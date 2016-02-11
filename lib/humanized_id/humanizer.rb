@@ -7,8 +7,8 @@ module HumanizedId
       @id               = id
       @min_length       = min_length
       @prefix           = prefix.nil? ? '' : prefix
-      @target_charset   = HumanizedId::CHARACTERSET.join('')
-      @source_charset   = SOURCE_CHARSET.join('')
+      @target_charset   = CHARSET.join
+      @source_charset   = SOURCE_CHARSET.join
     end
 
     def generate_humanized_id

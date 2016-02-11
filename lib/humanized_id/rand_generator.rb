@@ -3,7 +3,7 @@ module HumanizedId
     def initialize(prefix: '', length:)
       @prefix = prefix.nil? ? '' : prefix
       @length = length
-      @target_charset = HumanizedId::CHARACTERSET
+      @target_charset = CHARSET
     end
 
     def generate_random_humanized_id

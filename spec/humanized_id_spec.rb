@@ -45,7 +45,7 @@ describe HumanizedId do
       it 'should produce random id with requested length and prefix' do
         expect(random_id.length).to eq(params[:prefix].length + params[:length])
         expect(random_id[0..(params[:prefix].length - 1)]).to eq params[:prefix]
-        expect(random_id).to match(/#{params[:prefix]}#{HumanizedId::CHARACTERSET}{3}/)
+        expect(random_id).to match(/#{params[:prefix]}#{HumanizedId::CHARSET}{3}/)
       end
     end
   end
