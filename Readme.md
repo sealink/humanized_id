@@ -2,7 +2,7 @@
 
 HumanizedId is a gem designed to help you either:
  - Convert an existing numerical id into a 'human friendly' alphanumerical id
- - Generate a random 'human friendly' id that is a specified or default length
+ - Generate a random 'human friendly' id that is of a specified or default length
 
 A 'humanized' (or 'human friendly') id is an id that is easy to read and is based
 off a character set that does not allow vague or vulgar references.
@@ -54,7 +54,7 @@ length (using the default padding)
 
 Also note that if you specify a length shorter than the output id, the output id will
 not be modified. This is to stop the caller from accidently trimming the output id based
-on wrong assumptions. Think of the 'length' argument as a minimum guarnteed length of
+on wrong assumptions. Think of the 'length' argument as a minimum guaranteed length of
 the output id
 
 #### Adding a prefix
