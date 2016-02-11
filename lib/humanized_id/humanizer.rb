@@ -31,11 +31,9 @@ module HumanizedId
     end
 
     def resize(id:)
-      if @min_length > id.length
-        padding = @target_charset[0] * (@min_length - id.length)
-        id = "#{padding}#{id}"
-      end
-      id
+      return id if @min_length.nil? || @min_length <= id.length
+      padding = @target_charset[0] * (@min_length - id.length)
+      "#{padding}#{id}"
     end
   end
 end
