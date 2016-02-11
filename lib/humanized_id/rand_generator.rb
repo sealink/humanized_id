@@ -1,7 +1,7 @@
 module HumanizedId
   class RandGenerator
     def initialize(prefix: '', length:)
-      @prefix = prefix
+      @prefix = prefix.nil? ? '' : prefix
       @length = length
       @target_charset = HumanizedId::CHARACTERSET
     end

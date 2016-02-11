@@ -5,7 +5,7 @@ module HumanizedId
     def initialize(id:, length: nil, prefix: '')
       @id               = id
       @length           = length || id.to_s.length
-      @prefix           = prefix
+      @prefix           = prefix.nil? ? '' : prefix
       @target_charset   = HumanizedId::CHARACTERSET
     end
 
