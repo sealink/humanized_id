@@ -12,9 +12,8 @@ module HumanizedId
     end
 
     def generate_humanized_id
-      new_id = convert_to_target_base id: @id
-      new_id = convert_to_target_charset id: new_id
-      new_id = resize id: new_id if @min_length
+      commands = %i(convert_to_target_base convert_to_target_charset resize)
+      new_id = commands.inject(@id) { |previous_id, command| method(command).call(id: previous_id) }
       "#{@prefix}#{new_id}"
     end
 
