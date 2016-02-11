@@ -8,11 +8,11 @@ module HumanizedId
 
   class << self
     def humanize(id:, min_length: nil, prefix: '')
-      HumanizedId::Humanizer.new(id: id, min_length: min_length, prefix: prefix).generate_humanized_id
+      Humanizer.new(id: id, min_length: min_length, prefix: prefix).generate_humanized_id
     end
 
     def generate_random(prefix: '', length: DEFAULT_GENERATION_LENGTH)
-      HumanizedId::RandGenerator.new(prefix: prefix, length: length).generate_random_humanized_id
+      RandGenerator.new(prefix: prefix, length: length).generate_random_humanized_id
     end
   end
   Error = Class.new(StandardError)
