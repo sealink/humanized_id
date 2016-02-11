@@ -27,10 +27,7 @@ Or install it yourself as:
 
 ### Humanize an existing id
 
-The simplest way to call humanize is to pass in an existing numerical id,
-and let HumanizedId return a human friendly version of that id. This id will be shorter
-in length (due to base conversion) and will be an alphanumerical string based on
-a 'human safe' character-set
+The simplest way to call humanize is to pass in an existing numerical id, and let HumanizedId return a human friendly version of that id. This id will be shorter in length (due to base conversion) and will be an alphanumerical string based on a 'human safe' character-set.
 
 ```ruby
 humanized_id = HumanizedId.humanize id: 1234567
@@ -39,20 +36,16 @@ humanized_id = HumanizedId.humanize id: 1234567
 
 #### Ensuring minimum length of output id
 
-An optional min_length flag can be passed in order to guarantee the minimum length
-of the returned value. This will be done by 'padding' the return id with the
-safe-charset default value '2'
+An optional min_length flag can be passed in order to guarantee the minimum length of the returned value. This will be done by 'padding' the return id with the safe-charset default value '2'.
 
 ```ruby
 humanized_id = HumanizedId.humanize id: 1234567, min_length: 20
 # Returns '222222222222226RDFD'
 ```
 
-Note that the original length is not preserved during the base conversion, so you
-will need to explicitely pass in a min_length if you'd like a return id of the same length
+Note that the original length is not preserved during the base conversion, so you will need to explicitly pass in a min_length if you'd like a output id of the same length.
 
-Also note that if you specify a min_length shorter than the actual output id length,
-the output id will not be modified (as expected)
+Also note that if you specify a min_length shorter than the actual output id length, the output id will not be modified (as expected).
 
 #### Adding a prefix
 
@@ -63,12 +56,11 @@ humanized_id = HumanizedId.humanize id: 1234567, min_length: 20, prefix: 'TEST'
 # Will return 'TEST222222222222226RDFD'
 ```
 
-The prefix is added to the humanized id after all other processing (including min_length padding).
-Therefore the total length of the above example wil be 20 + 'TEST'.length = 24
+The prefix is added to the humanized id after all other processing (including min_length padding). Therefore the total length of the above example wil be 20 + 4 (length of 'TEST').
 
 ### Generating a random humanized id
 
-Call 'generate_random' with optional length and prefix
+Call 'generate_random' with optional length and prefix.
 
 ```ruby
 random_humanized_id = HumanizedId.generate_random
@@ -80,8 +72,7 @@ Will generate a random human friendly id of default length (see HumanizedId::DEF
 random_humanized_id = HumanizedId.generate_random length: 20, prefix: 'TEST'
 ```
 
-This will generate a random humanized id of length 20 and then add the prefix to the id
-thus resulting in a total length of 24
+This will generate a random humanized id of length 20 and then add the prefix to the id thus resulting in a total length of 24.
 
 ## Development
 
