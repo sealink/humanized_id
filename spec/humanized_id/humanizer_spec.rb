@@ -5,54 +5,44 @@ describe HumanizedId::Humanizer do
 
   context 'when generating humanized id' do
     let(:generated_id) { humanizer.generate_humanized_id }
+    let(:params) { { id: 1_234_567 } }
+    let(:expected_id) { '6RDFD' }
 
     context 'testing various ids' do
-      context 'with human friendly characters' do
+      context 'non integer id' do
         let(:params) { { id: 'CDFGHKMN' } }
-        it 'should return original string' do
-          expect(generated_id).to eq params[:id]
+        it 'should raise an error' do
+          expect { generated_id }.to raise_error(HumanizedId::Error, 'id is not an integer')
         end
       end
 
-      context 'with non human friendly characters' do
-        let(:params) { { id: '22FARTYFART' } }
-        it 'should return a different humanized id of same size' do
-          expect(generated_id).not_to eq params[:id]
-          expect(generated_id.length).to eq params[:id].length
-        end
-      end
-
-      context 'with numerical id' do
-        let(:params) { { id: 123_456_789 } }
-        it 'should return a sanitised id of same size and structure' do
-          expect(generated_id).to match(/.234.67.9/)
-          expect(generated_id.length).to eq params[:id].to_s.length
+      context 'with an integer id' do
+        it 'should produce expected id' do
+          expect(generated_id).to eq expected_id
         end
       end
     end
 
     context 'testing various lengths' do
-      let(:params) { { id: 'CDFGHKMN' } } # Human-friendly id, to isolate length testing
       context 'with greater length' do
         let(:params) { super().merge(length: 15) }
-        it 'should add additional padding to meet required length' do
-          expect(generated_id.length).to eq(params[:length])
-          expect(generated_id.slice((params[:length] - params[:id].length), params[:length]))
-            .to eq params[:id]
+        it 'should produce expected id with correct number of padding' do
+          expect(generated_id).to eq(('2' * 10) + expected_id)
         end
       end
-      context 'with smaller length' do
-        let(:params) { super().merge(length: 2) }
-        it 'should trim the id to required length' do
-          expect(generated_id).to eq(params[:id].slice(0, params[:length]))
+
+      context 'with shorter length' do
+        let(:params) { super().merge(length: 3) }
+        it 'should produce original expected id' do
+          expect(generated_id).to eq expected_id
         end
       end
     end
 
     context 'with prefix added' do
-      let(:params) { { id: 'CDFGHKMN', prefix: 'abc' } }
+      let(:params) { super().merge(prefix: 'abc') }
       it 'should generate id with prefix added' do
-        expect(generated_id).to eq(params[:prefix] + params[:id])
+        expect(generated_id).to eq(params[:prefix] + expected_id)
       end
     end
   end
