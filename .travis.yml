@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 2.1
+  - 2.2
+  - 2.3.0
+before_install: gem install bundler -v 1.11.2
+notifications:
+  email:
+    - support@travellink.com.au
+  flowdock:
+    secure: CkLwygzeYX5y3r0eg1bn8wFLYd7qLeOrbrawQb/c/sTehXvU95sE/yZMNdPKD/Mv+IQ+blVVr4NAt8MvbN20Nw/W5EtcsMo2S2msuCsVbwCkvj21Dqm+pTRoD8O2yf3zxX5T7wmZ7PoD7UfE+wIPQ5C7QunODxCPnpPlj/RCaOKejarmdQWXQaT6/lJpzoRDav2oj+bbyPCwQbYGSYWFPFwQ3FylGNp/7eCD3wSPJtmYdunJtx1yVW4wnInTEzqsQ4eJubpwEfQ8vsWq7KbeUf2Z0IaPVtSzwN7gjIncGJ1gS5MGhZkFSsNhY9BvVkWw366qkTcESB3CbF5O9vUrUyWAaiLIHZrqTaqhocZ+4Y6jWJG/gSfLGYTSlVx+qxQ/Pd75bXu6ovlL2HF9lYEL1mbVp4GrOGcQTnw2SLOnLRmsGtf5CEVBE4llQXR0ySzqLCc0Q6XBLgbvG5yg+iKsnDQRZijStUQze/rQVGbtOLxXXyv+mQolaKd475igJYZB29KS0gW3gCJrTQPLRm1D/PPIOHLFysKgPc6kE5UcPWmTrnH8hWKj2K0tiN+u5S4jostoh1riDBr+baLQ5eI9k6KVevM7t1ICiSb9A9WpRfbUtGRHirnte/MgAc0EJ/J/iAT5breaV9urnjzyaYvpH8YzXHMbuw/tlS8jdxlI8qs=
+sudo: false
+cache: bundler
