@@ -6,7 +6,7 @@ module HumanizedId
     def initialize(id:, min_length: nil, prefix: '')
       @id               = id
       @min_length       = min_length
-      @prefix           = prefix.nil? ? '' : prefix
+      @prefix           = prefix.to_s
       @target_charset   = CHARSET.join
       @source_charset   = SOURCE_CHARSET.join
     end
