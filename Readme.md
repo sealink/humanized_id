@@ -5,7 +5,7 @@ HumanizedId is a gem designed to help you either:
  - Generate a random 'human friendly' id at a given or default length
 
 A 'humanized' (or 'human friendly') id is an id that is easy to
-read & copy and does not contain vague or vulgur references.
+read & copy and does not contain vague or vulgar references.
 
 ## Installation
 
