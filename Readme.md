@@ -1,11 +1,11 @@
 # HumanizedId
 
 HumanizedId is a gem designed to help you either:
- - Convert an existing alphanumerical id into a 'human friendly' id
- - Generate a random 'human friendly' id at a given or default length
+ - Convert an existing numerical id into a 'human friendly' alphanumerical id
+ - Generate a random 'human friendly' id that is of a specified or default length
 
-A 'humanized' (or 'human friendly') id is an id that is easy to
-read & copy and does not contain vague or vulgar references.
+A 'humanized' (or 'human friendly') id is an id that is easy to read and is based
+off a character set that does not allow vague or vulgar references.
 
 ## Installation
 
@@ -27,42 +27,43 @@ Or install it yourself as:
 
 ### Humanize an existing id
 
-The simplest way to call humanize is to pass in an existing alphanumerical id,
-and let HumanizedId return a human friendly version of that id
+The simplest way to call humanize is to pass in an existing numerical id,
+and let HumanizedId return a human friendly version of that id. This id will be shorter
+in length (due to base conversion) and will be an alphanumerical string based on
+a 'human safe' character-set
 
 ```ruby
-humanized_id = HumanizedId.humanize id: 'AW121314WFAAGARS3'
+humanized_id = HumanizedId.humanize id: 1234567
+# Returns '6RDFD'
 ```
 
-This is done by replacing any 'bad' characters in the id with random 'good' character
-from the applicable characterset (see HumanizedId::CHARACTERSET). The result is an id
-of the equivilant size but some characters changed.
+#### Ensuring minimum length of output id
 
-WARNING: Because the 'bad' characters are replaced with random good characters, the humanize
-process is unique on each run. Therefore, given a 'bad' id, do not expect to get the same 'good'
-id each time you run the humanize process. It is recommended that you store your new humanized id
-in persistent storage if you would like to reference it later.
-
-#### Preserving, adding or removing length
-
-An optional flag can be passed in to add, remove or preserve length
+An optional length flag can be passed in if you'd like to preserve or increase the
+length of the returned value. This will be done by 'padding' the return id with the
+safe charset default value '2'
 
 ```ruby
-humanized_id = HumanizedId.humanize id: 'AW121314WFAAGARS3', length: 20
+humanized_id = HumanizedId.humanize id: 1234567, length: 20
+# Returns '222222222222226RDFD'
 ```
 
-By default, the humanized id will be the same length as the original id.
-If you specify a length greater than the original id,
-then the id will be prefixed with random characters to meet the required length.
-If you pass in a shorter length than the original id, then the humanized id
-will be sliced to meet the required length
+Note that the original length is not preserved during the base conversion, so you
+will need to explicitely pass in that length if you'd like the output to be of the same
+length (using the default padding)
+
+Also note that if you specify a length shorter than the output id, the output id will
+not be modified. This is to stop the caller from accidently trimming the output id based
+on wrong assumptions. Think of the 'length' argument as a minimum guaranteed length of
+the output id
 
 #### Adding a prefix
 
 Pass in a prefix if you'd like to add a prefix to your humanized id
 
 ```ruby
-humanized_id = HumanizedId.humanize id: 'AW121314WFAAGARS3', length: 20, prefix: 'TEST'
+humanized_id = HumanizedId.humanize id: 1234567, length: 20, prefix: 'TEST'
+# Will return 'TEST222222222222226RDFD'
 ```
 
 The prefix is added to the humanized id after all other processing (including length padding).
