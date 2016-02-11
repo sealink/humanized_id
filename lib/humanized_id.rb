@@ -7,8 +7,8 @@ module HumanizedId
     (('0'..'9').to_a + ('A'..'Z').to_a - SIMILAR_NUMBERS_LETTERS - VOWELS).freeze
 
   class << self
-    def humanize(id:, length: nil, prefix: '')
-      HumanizedId::Humanizer.new(id: id, length: length, prefix: prefix).generate_humanized_id
+    def humanize(id:, min_length: nil, prefix: '')
+      HumanizedId::Humanizer.new(id: id, min_length: min_length, prefix: prefix).generate_humanized_id
     end
 
     def generate_random(prefix: '', length: DEFAULT_GENERATION_LENGTH)

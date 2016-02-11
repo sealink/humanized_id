@@ -23,16 +23,16 @@ describe HumanizedId::Humanizer do
       end
     end
 
-    context 'testing various lengths' do
-      context 'with greater length' do
-        let(:params) { super().merge(length: 15) }
+    context 'testing various minimum lengths' do
+      context 'with greater min_length' do
+        let(:params) { super().merge(min_length: 15) }
         it 'should produce expected id with correct number of padding' do
           expect(generated_id).to eq(('2' * 10) + expected_id)
         end
       end
 
-      context 'with shorter length' do
-        let(:params) { super().merge(length: 3) }
+      context 'with shorter min_length' do
+        let(:params) { super().merge(min_length: 3) }
         it 'should produce original expected id' do
           expect(generated_id).to eq expected_id
         end

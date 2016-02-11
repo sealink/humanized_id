@@ -15,11 +15,11 @@ describe HumanizedId do
       let(:params) {
         {
           id: 1_234_567,
-          length: 20,
+          min_length: 20,
           prefix: 'test'
         }
       }
-      it 'should humanize id with appropriate length and prefix' do
+      it 'should humanize id with appropriate min_length and prefix' do
         expect(humanized_id).to eq(params[:prefix] + ('2' * 15) + expected_id)
       end
     end
