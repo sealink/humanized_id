@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 module HumanizedId
   DEFAULT_GENERATION_LENGTH = 24
+  SIMILAR_NUMBERS_LETTERS = %w(0 O 1 I L 5 S 8 B).freeze
+  VOWELS = %w(A E I O U).freeze
   CHARACTERSET =
-    (('0'..'9').to_a + ('A'..'Z').to_a - %w(0 1 5 8 A B E I L O S U)).freeze
+    (('0'..'9').to_a + ('A'..'Z').to_a - SIMILAR_NUMBERS_LETTERS - VOWELS).freeze
 
   class << self
     def humanize(id:, length: nil, prefix: '')
