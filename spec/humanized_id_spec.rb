@@ -22,7 +22,7 @@ describe HumanizedId do
       it 'should humanize id with appropriate length and prefix' do
         expect(humanized_id).not_to eq(params[:prefix] + params[:id])
         expect(humanized_id.size).to eq(params[:prefix].length + params[:length])
-        expect(humanized_id.slice(0..(params[:prefix].length - 1))).to eq params[:prefix]
+        expect(humanized_id.slice(0, params[:prefix].length)).to eq params[:prefix]
       end
     end
   end

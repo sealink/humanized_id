@@ -35,7 +35,7 @@ module HumanizedId
         # Pad with random humanized characters
         id = "#{HumanizedId.generate_random(length: (required_length - id.length))}#{id}"
       elsif required_length < id.length
-        id = id.slice(0..(required_length - 1))
+        id = id.slice(0,required_length)
       end
       id
     end
