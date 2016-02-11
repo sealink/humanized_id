@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 module HumanizedId
   class Humanizer
-    SOURCE_CHARSET = %w(0123456789abcdefghijklmnopqrstuvwxyz).freeze
+    SOURCE_CHARSET = (('0'..'9').to_a + ('a'..'z').to_a).freeze
 
     def initialize(id:, min_length: nil, prefix: '')
       @id               = id
