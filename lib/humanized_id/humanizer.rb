@@ -1,5 +1,3 @@
-require 'facets'
-
 module HumanizedId
   class Humanizer
     def initialize(id:, length: nil, prefix: '')
