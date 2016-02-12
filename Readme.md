@@ -1,10 +1,10 @@
 # HumanizedId
 
-[![Gem Version](https://badge.fury.io/rb/humanized_id.svg)](http://badge.fury.io/rb/humanized_id)
+[![Gem Version](https://badge.fury.io/rb/humanized_id.svg)](https://badge.fury.io/rb/humanized_id)
 [![Build Status](https://travis-ci.org/sealink/humanized_id.svg?branch=master)](https://travis-ci.org/sealink/humanized_id)
 [![Coverage Status](https://coveralls.io/repos/github/sealink/humanized_id/badge.svg?branch=master)](https://coveralls.io/github/sealink/humanized_id?branch=master)
 [![Dependency Status](https://gemnasium.com/sealink/humanized_id.svg)](https://gemnasium.com/sealink/humanized_id)
-[![Code Climate](https://codeclimate.com/github/sealink/humanized_id/badges/gpa.svg)](https://codeclimate.com/github/sealink/humanized_id)
+[![Code Climate](https://codeclimate.com/repos/56bd35a6420f4f6273003061/badges/bd47b2a4a89330fde353/gpa.svg)](https://codeclimate.com/repos/56bd35a6420f4f6273003061/feed)
 
 HumanizedId is a gem designed to help you either:
  - Convert an existing numerical id into a 'human friendly' alphanumerical id
