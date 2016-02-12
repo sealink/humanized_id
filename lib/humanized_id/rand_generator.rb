@@ -12,13 +12,13 @@ module HumanizedId
 
     private
 
-    def generate_random(length: @length, target_charset: @target_charset)
-      SecureRandom.random_bytes(length).unpack('C*').map{ |byte|
-        idx = byte % 64
-        idx = SecureRandom.random_number(target_charset.size) if
-          idx >= target_charset.size
-        target_charset[idx]
-      }.join
+    def generate_random
+      SecureRandom.random_bytes(@length).unpack('C*').map{ |byte| map_to_char(byte) }.join
+    end
+
+    def map_to_char(byte)
+      index = byte % @target_charset.size
+      @target_charset[index]
     end
   end
 end
