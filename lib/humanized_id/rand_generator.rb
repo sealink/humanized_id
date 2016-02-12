@@ -14,7 +14,7 @@ module HumanizedId
     private
 
     def generate_random
-      SecureRandom.random_bytes(@length).unpack('C*').map{ |byte| map_to_char(byte) }.join
+      SecureRandom.random_bytes(@length).unpack('C*').map { |byte| map_to_char(byte) }.join
     end
 
     def map_to_char(byte)
