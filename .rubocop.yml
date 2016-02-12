@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.1
 
 Metrics/LineLength:
   Max: 100
@@ -12,3 +12,9 @@ Style/BlockDelimiters:
 
 Style/TrivialAccessors:
   AllowPredicates: true
+
+Style/SignalException:
+  EnforcedStyle: semantic
+
+Style/SingleLineBlockParams:
+  Enabled: false
