@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 MINIMUM_COVERAGE = 80
 
 unless ENV['COVERAGE'] == 'off'
