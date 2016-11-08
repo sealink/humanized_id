@@ -1,3 +1,9 @@
+## Unreleased
+
+Changed:
+
+  - Use coverage kit to enforce maximum coverage
+
 ## 0.2.0 (2016-02-11)
 
 Fixed:
