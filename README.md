@@ -1,13 +1,14 @@
 # HumanizedId
 
 [![Gem Version](https://badge.fury.io/rb/humanized_id.svg)](https://badge.fury.io/rb/humanized_id)
-[![Build Status](https://travis-ci.org/sealink/humanized_id.svg?branch=master)](https://travis-ci.org/sealink/humanized_id)
+[![Build Status](https://github.com/sealink/humanized_id/workflows/Build/badge.svg?branch=master)](https://github.com/sealink/humanized_id/actions)
 [![Coverage Status](https://coveralls.io/repos/github/sealink/humanized_id/badge.svg?branch=master)](https://coveralls.io/github/sealink/humanized_id?branch=master)
 [![Code Climate](https://codeclimate.com/github/sealink/humanized_id/badges/gpa.svg)](https://codeclimate.com/github/sealink/humanized_id)
 
 HumanizedId is a gem designed to help you either:
- - Convert an existing numerical id into a 'human friendly' alphanumerical id
- - Generate a random 'human friendly' id that is of a specified or default length
+
+- Convert an existing numerical id into a 'human friendly' alphanumerical id
+- Generate a random 'human friendly' id that is of a specified or default length
 
 A 'humanized' (or 'human friendly') id is an id that is easy to read and is based
 off a character set that does not allow vague or vulgar references.
@@ -84,6 +85,19 @@ This will generate a random humanized id of length 20 and then add the prefix to
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+## Release
+
+To publish a new version of this gem the following steps must be taken.
+
+* Update the version in the following files
+  ```
+    CHANGELOG.md
+    lib/humanized_id/version.rb
+  ````
+* Create a tag using the format v0.1.0
+* Follow build progress in GitHub actions
+
 
 ## Contributing
 
