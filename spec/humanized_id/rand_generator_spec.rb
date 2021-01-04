@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe HumanizedId::RandGenerator do
   let(:params) { { length: 24 } }
-  let(:rand_generator) { HumanizedId::RandGenerator.new params }
+  let(:rand_generator) { HumanizedId::RandGenerator.new(**params) }
   let(:rand_humanized_id) { rand_generator.generate_random_humanized_id }
 
   context 'when generating random humanized id' do

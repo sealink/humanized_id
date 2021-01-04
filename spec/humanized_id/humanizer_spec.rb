@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe HumanizedId::Humanizer do
-  let(:humanizer) { HumanizedId::Humanizer.new params }
+  let(:humanizer) { HumanizedId::Humanizer.new(**params) }
 
   context 'when generating humanized id' do
     let(:generated_id) { humanizer.generate_humanized_id }
