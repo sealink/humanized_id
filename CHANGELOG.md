@@ -1,8 +1,7 @@
 ## Unreleased
 
-Changed:
-
   - Use coverage kit to enforce maximum coverage
+  - [TT-8610] Build with github actions, add ruby 3 to build matrix
 
 ## 0.2.0 (2016-02-11)
 
