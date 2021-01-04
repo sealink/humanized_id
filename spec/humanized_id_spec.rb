@@ -6,7 +6,7 @@ describe HumanizedId do
 
   context 'when calling humanize' do
     let(:params) { { id: 1_234_567 } }
-    let(:humanize) { HumanizedId.humanize params }
+    let(:humanize) { HumanizedId.humanize(**params) }
 
     let(:humanizer_instance) { double }
     let(:humanizer) { double }
@@ -43,7 +43,7 @@ describe HumanizedId do
 
   context 'when calling generate_random' do
     let(:params) { {} }
-    let(:generate_random) { HumanizedId.generate_random params }
+    let(:generate_random) { HumanizedId.generate_random(**params) }
 
     let(:rand_generator_instance) { double }
     let(:rand_generator) { double }
