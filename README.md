@@ -1,7 +1,7 @@
 # HumanizedId
 
 [![Gem Version](https://badge.fury.io/rb/humanized_id.svg)](https://badge.fury.io/rb/humanized_id)
-[![Build Status](https://github.com/sealink/humanized_id/workflows/Build/badge.svg?branch=master)](https://github.com/sealink/humanized_id/actions)
+[![Build Status](https://github.com/sealink/humanized_id/workflows/Build%20and%20Test/badge.svg?branch=master)](https://github.com/sealink/humanized_id/actions)
 [![Coverage Status](https://coveralls.io/repos/github/sealink/humanized_id/badge.svg?branch=master)](https://coveralls.io/github/sealink/humanized_id?branch=master)
 [![Code Climate](https://codeclimate.com/github/sealink/humanized_id/badges/gpa.svg)](https://codeclimate.com/github/sealink/humanized_id)
 
@@ -90,14 +90,13 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 To publish a new version of this gem the following steps must be taken.
 
-* Update the version in the following files
+- Update the version in the following files
   ```
     CHANGELOG.md
     lib/humanized_id/version.rb
-  ````
-* Create a tag using the format v0.1.0
-* Follow build progress in GitHub actions
-
+  ```
+- Create a tag using the format v0.1.0
+- Follow build progress in GitHub actions
 
 ## Contributing
 
