@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'securerandom'
+
 module HumanizedId
   DEFAULT_GENERATION_LENGTH = 24
   SIMILAR_NUMBERS_LETTERS = %w(0 O 1 I L 5 S 8 B).freeze
