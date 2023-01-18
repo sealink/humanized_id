@@ -1,3 +1,7 @@
+## Unreleased
+
+- [PLAT-1175] Update to Ruby 3.2
+
 ## 0.3.0
 
 - Use coverage kit to enforce maximum coverage
